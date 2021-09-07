@@ -1,11 +1,11 @@
 {
-    "name": "git-zjx/pay",
+    "name": "git-zjx/ysd-pay",
     "description": "基于 yansongda/pay v2 版本的功能改动",
     "keywords": ["alipay", "wechat", "pay"],
     "type": "library",
     "support": {
-        "issues": "https://github.com/git-zjx/pay/issues",
-        "source": "https://github.com/git-zjx/pay"
+        "issues": "https://github.com/git-zjx/ysd-pay/issues",
+        "source": "https://github.com/git-zjx/ysd-pay"
     },
     "authors": [
         {
