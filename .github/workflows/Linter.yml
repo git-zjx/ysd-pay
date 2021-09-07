@@ -12,7 +12,7 @@ jobs:
           - 7.3
           - 7.4
     container:
-      image: Git_zjx/php-fpm:${{ matrix.php }}
+      image: yansongda/php-fpm:${{ matrix.php }}
     steps:
       - name: Install Git
         run: apt-get update && apt-get install -y git
