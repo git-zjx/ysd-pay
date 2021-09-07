@@ -3,14 +3,14 @@
 namespace Git_zjx\Pay\Gateways\Wechat;
 
 use Exception;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Git_zjx\Pay\Events;
 use Git_zjx\Pay\Exceptions\GatewayException;
 use Git_zjx\Pay\Exceptions\InvalidArgumentException;
 use Git_zjx\Pay\Exceptions\InvalidSignException;
 use Git_zjx\Pay\Gateways\Wechat;
 use Git_zjx\Supports\Str;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class AppGateway extends Gateway
 {

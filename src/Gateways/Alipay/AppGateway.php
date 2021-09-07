@@ -2,11 +2,11 @@
 
 namespace Git_zjx\Pay\Gateways\Alipay;
 
-use Symfony\Component\HttpFoundation\Response;
 use Git_zjx\Pay\Events;
 use Git_zjx\Pay\Exceptions\InvalidArgumentException;
 use Git_zjx\Pay\Exceptions\InvalidConfigException;
 use Git_zjx\Pay\Gateways\Alipay;
+use Symfony\Component\HttpFoundation\Response;
 
 class AppGateway extends Gateway
 {

@@ -2,8 +2,8 @@
 
 namespace Git_zjx\Pay\Contracts;
 
-use Symfony\Component\HttpFoundation\Response;
 use Git_zjx\Supports\Collection;
+use Symfony\Component\HttpFoundation\Response;
 
 interface GatewayInterface
 {

@@ -2,9 +2,9 @@
 
 namespace Git_zjx\Pay\Listeners;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Git_zjx\Pay\Events;
 use Git_zjx\Pay\Log;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class KernelLogSubscriber implements EventSubscriberInterface
 {

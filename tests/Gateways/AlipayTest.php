@@ -2,9 +2,9 @@
 
 namespace Git_zjx\Pay\Tests\Gateways;
 
-use Symfony\Component\HttpFoundation\Response;
 use Git_zjx\Pay\Pay;
 use Git_zjx\Pay\Tests\TestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class AlipayTest extends TestCase
 {

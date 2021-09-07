@@ -2,11 +2,11 @@
 
 namespace Git_zjx\Pay\Gateways\Wechat;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Git_zjx\Pay\Events;
 use Git_zjx\Pay\Exceptions\GatewayException;
 use Git_zjx\Pay\Exceptions\InvalidArgumentException;
 use Git_zjx\Pay\Exceptions\InvalidSignException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class WapGateway extends Gateway
 {

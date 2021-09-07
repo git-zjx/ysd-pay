@@ -2,8 +2,6 @@
 
 namespace Git_zjx\Pay\Gateways;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Git_zjx\Pay\Contracts\GatewayApplicationInterface;
 use Git_zjx\Pay\Contracts\GatewayInterface;
 use Git_zjx\Pay\Events;
@@ -16,6 +14,8 @@ use Git_zjx\Pay\Gateways\Alipay\Support;
 use Git_zjx\Supports\Collection;
 use Git_zjx\Supports\Config;
 use Git_zjx\Supports\Str;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @method Response   app(array $config)      APP 支付

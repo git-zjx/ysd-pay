@@ -2,12 +2,12 @@
 
 namespace Git_zjx\Pay\Gateways\Wechat;
 
-use Symfony\Component\HttpFoundation\Request;
 use Git_zjx\Pay\Events;
 use Git_zjx\Pay\Exceptions\GatewayException;
 use Git_zjx\Pay\Exceptions\InvalidArgumentException;
 use Git_zjx\Pay\Exceptions\InvalidSignException;
 use Git_zjx\Supports\Collection;
+use Symfony\Component\HttpFoundation\Request;
 
 class ScanGateway extends Gateway
 {
