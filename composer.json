@@ -20,7 +20,7 @@
         "ext-libxml": "*",
         "ext-json": "*",
         "ext-bcmath": "*",
-        "git-zjx/supports": "^1.0",
+        "git-zjx/ysd-supports": "^1.0",
         "symfony/http-foundation": "^4.0 || ^5.0.7",
         "symfony/event-dispatcher": "^4.0 || ^5.0"
     },
