@@ -1,6 +1,6 @@
 {
     "name": "git-zjx/pay",
-    "description": "专注 Alipay 和 WeChat 的支付扩展包",
+    "description": "基于 yansongda/pay v2 版本的功能改动",
     "keywords": ["alipay", "wechat", "pay"],
     "type": "library",
     "support": {
