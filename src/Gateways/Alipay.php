@@ -244,7 +244,7 @@ class Alipay implements GatewayApplicationInterface
         return Support::requestApi($this->payload);
     }
 
-    public function sign($params = []): Collection
+    public function sign($params = []): Response
     {
         $this->payload['method'] = 'alipay.user.agreement.page.sign';
         $this->payload['biz_content'] = json_encode($params);
@@ -252,7 +252,7 @@ class Alipay implements GatewayApplicationInterface
 
         Events::dispatch(new Events\MethodCalled('Alipay', 'Sign', $this->gateway, $this->payload));
 
-        return Support::requestApi($this->payload);
+        return new Response(http_build_query($this->payload));
     }
 
     /**
