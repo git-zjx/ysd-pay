@@ -152,7 +152,7 @@ class Alipay implements GatewayApplicationInterface
 
         $this->payload['biz_content'] = json_encode($params);
 
-        $gateway = get_class($this).'\\'.Str::studly($gateway).'Gateway';
+        $gateway = get_class($this) . '\\' . Str::studly($gateway) . 'Gateway';
 
         if (class_exists($gateway)) {
             return $this->makePay($gateway);
@@ -207,7 +207,7 @@ class Alipay implements GatewayApplicationInterface
      */
     public function find($order, string $type = 'wap'): Collection
     {
-        $gateway = get_class($this).'\\'.Str::studly($type).'Gateway';
+        $gateway = get_class($this) . '\\' . Str::studly($type) . 'Gateway';
 
         if (!class_exists($gateway) || !is_callable([new $gateway(), 'find'])) {
             throw new GatewayException("{$gateway} Done Not Exist Or Done Not Has FIND Method");
@@ -240,6 +240,17 @@ class Alipay implements GatewayApplicationInterface
         $this->payload['sign'] = Support::generateSign($this->payload);
 
         Events::dispatch(new Events\MethodCalled('Alipay', 'Refund', $this->gateway, $this->payload));
+
+        return Support::requestApi($this->payload);
+    }
+
+    public function sign($params = []): Collection
+    {
+        $this->payload['method'] = 'alipay.user.agreement.page.sign';
+        $this->payload['biz_content'] = json_encode($params);
+        $this->payload['sign'] = Support::generateSign($this->payload);
+
+        Events::dispatch(new Events\MethodCalled('Alipay', 'Sign', $this->gateway, $this->payload));
 
         return Support::requestApi($this->payload);
     }
@@ -406,7 +417,7 @@ class Alipay implements GatewayApplicationInterface
 
         Events::dispatch(new Events\MethodCalled(
             'Alipay',
-            'extend - '.$method,
+            'extend - ' . $method,
             $this->gateway,
             is_array($customize) ? $customize : $customize->toArray()
         ));
