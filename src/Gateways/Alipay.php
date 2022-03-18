@@ -175,7 +175,6 @@ class Alipay implements GatewayApplicationInterface
     {
         if (is_null($data)) {
             $request = Request::createFromGlobals();
-
             $data = $request->request->count() > 0 ? $request->request->all() : $request->query->all();
         }
 
@@ -244,15 +243,48 @@ class Alipay implements GatewayApplicationInterface
         return Support::requestApi($this->payload);
     }
 
+    public function agreementQuery(array $order): Collection
+    {
+        $this->payload['method'] = 'alipay.user.agreement.query';
+        $this->payload['biz_content'] = json_encode($order);
+        $this->payload['sign'] = Support::generateSign($this->payload);
+
+        Events::dispatch(new Events\MethodCalled('Alipay', 'AgreementQuery', $this->gateway, $this->payload));
+
+        return Support::requestApi($this->payload);
+    }
+
     public function sign($params = []): Response
     {
         $this->payload['method'] = 'alipay.user.agreement.page.sign';
         $this->payload['biz_content'] = json_encode($params);
-        $this->payload['sign'] = Support::generateSign($this->payload);
+        $this->payload['sign'] = urlencode(Support::generateSign($this->payload));
 
         Events::dispatch(new Events\MethodCalled('Alipay', 'Sign', $this->gateway, $this->payload));
+        // 短链特殊处理，不再适用于直接访问
+        return new Response(http_build_query($this->payload, "", urlencode("&")));
+    }
 
-        return new Response(http_build_query($this->payload));
+    public function unSign($params = []): Collection
+    {
+        $this->payload['method'] = 'alipay.user.agreement.unsign';
+        $this->payload['biz_content'] = json_encode($params);
+        $this->payload['sign'] = Support::generateSign($this->payload);
+
+        Events::dispatch(new Events\MethodCalled('Alipay', 'UnSign', $this->gateway, $this->payload));
+
+        return Support::requestApi($this->payload);
+    }
+
+    public function planModify(array $order): Collection
+    {
+        $this->payload['method'] = 'alipay.user.agreement.executionplan.modify';
+        $this->payload['biz_content'] = json_encode($order);
+        $this->payload['sign'] = Support::generateSign($this->payload);
+
+        Events::dispatch(new Events\MethodCalled('Alipay', 'PlanModify', $this->gateway, $this->payload));
+
+        return Support::requestApi($this->payload);
     }
 
     /**

@@ -139,9 +139,9 @@ class Support
         $data = array_filter($data, function ($value) {
             return ('' == $value || is_null($value)) ? false : true;
         });
-
+        
         $result = json_decode(self::$instance->post('', $data), true);
-
+    
         Events::dispatch(new Events\ApiRequested('Alipay', '', self::$instance->getBaseUri(), $result));
 
         return self::processingApiResult($data, $result, $response);
@@ -171,7 +171,6 @@ class Support
                 wordwrap($privateKey, 64, "\n", true).
                 "\n-----END RSA PRIVATE KEY-----";
         }
-
         openssl_sign(self::getSignContent($params), $sign, $privateKey, OPENSSL_ALGO_SHA256);
 
         $sign = base64_encode($sign);
@@ -198,7 +197,6 @@ class Support
     public static function verifySign(array $data, $sync = false, $sign = null): bool
     {
         $publicKey = self::$instance->ali_public_key;
-
         if (is_null($publicKey)) {
             throw new InvalidConfigException('Missing Alipay Config -- [ali_public_key]');
         }
@@ -214,9 +212,9 @@ class Support
                 wordwrap($publicKey, 64, "\n", true).
                 "\n-----END PUBLIC KEY-----";
         }
-
+        
         $sign = $sign ?? $data['sign'];
-
+        
         $toVerify = $sync ? json_encode($data, JSON_UNESCAPED_UNICODE) : self::getSignContent($data, true);
 
         $isVerify = 1 === openssl_verify($toVerify, base64_decode($sign), $publicKey, OPENSSL_ALGO_SHA256);
